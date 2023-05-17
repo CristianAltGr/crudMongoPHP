@@ -10,12 +10,15 @@
 
 require("AlumneController.php");
 
+$msg = null;
+
 if (isset($_GET['action'])) {
+
 	if ($_GET['action'] == 'delete') {
 		if (isset($_GET['id'])) {
-			deleteAlumne($_GET['id']);
+			$msg = deleteAlumne($_GET['id']);
 		}
-		loadMainView();
+		loadMainView($msg);
 	} else if ($_GET['action'] == 'new') {
 		loadNewAlumneView();
 	} else if ($_GET['action'] == 'edit') {
@@ -27,13 +30,12 @@ if (isset($_GET['action'])) {
 			loadShowAlumneView($_GET['id']);
 		}
 	} else {
-		loadMainView();
+		loadMainView($msg);
 	}
 } else if (isset($_POST['action'])) {
 	if ($_POST['action'] == 'add') {
 		// Exemple de com utilitzar els missatges que el model ens retorna.
 		// Aquests els desem a la variable $msg i els enviem a la vista principal
-		$msg = null;
 
 		if (isset($_POST['nom']) && isset($_POST['cognom']) && isset($_POST['mail']) && isset($_POST['data_naixement'])) {
 			$msg = addAlumne($_POST['nom'], $_POST['cognom'], $_POST['mail'], $_POST['data_naixement']);
@@ -41,13 +43,13 @@ if (isset($_GET['action'])) {
 		loadMainView($msg);
 	} else if ($_POST['action'] == 'up') {
 		if (isset($_POST['id']) && isset($_POST['nom']) && isset($_POST['cognom']) && isset($_POST['data_naixement'])) {
-			upAlumne($_POST['id'], $_POST['nom'], $_POST['cognom'], $_POST['mail'], $_POST['data_naixement']);
+			$msg = upAlumne($_POST['id'], $_POST['nom'], $_POST['cognom'], $_POST['mail'], $_POST['data_naixement']);
 		}
-		loadMainView();
+		loadMainView($msg);
 	} else {
-		loadMainView();
+		loadMainView($msg);
 	}
 } else {
-	loadMainView();
+	loadMainView($msg);
 }
 ?>

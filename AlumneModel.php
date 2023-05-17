@@ -48,6 +48,8 @@ function alumneUpdate($id, $nom, $cognom, $mail, $data_naixement)
             ]
         ]
     );
+
+    return ($updateResult->getModifiedCount()) > 0 ? true : false;
 }
 
 function alumneAdd($nom, $cognom, $mail, $data_naixement)
@@ -62,6 +64,8 @@ function alumneAdd($nom, $cognom, $mail, $data_naixement)
         'data_naixement' => $data_naixement,
         'mail' => $mail
     ]);
+
+    return ($insertOneResult->getInsertedCount()) > 0 ? true : false;
 }
 
 function alumneDelete($id)
@@ -70,4 +74,6 @@ function alumneDelete($id)
     $conexion = conectar();
     $coleccion = $conexion->alumnes;
     $deleteResult = $coleccion->deleteOne(['_id' => $idObjeto]);
+
+    return ($deleteResult->getDeletedCount()) > 0 ? true : false;
 }

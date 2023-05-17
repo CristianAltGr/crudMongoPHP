@@ -23,14 +23,17 @@
 			<h3>CRUD amb PDO</h3>
 		</div>
 		<?php
-		if (isset($missatge["Success"])) {
-			echo "<div class='alert alert-success' role='alert'>
-					  " . $missatge["Success"] . "
-					</div>";
-		} else if (isset($missatge["Error"])) {
-			echo "<div class='alert alert-danger' role='alert'>
-					  " . $missatge["Error"] . "
-					</div>";
+
+		if (isset($msg)) {
+			if ($msg) {
+				echo "<div class='alert alert-success' role='alert'>
+							<p>Operació amb exit</p>
+					   </div>";
+			} else if (isset($missatge["Error"])) {
+				echo "<div class='alert alert-danger' role='alert'>
+					  	<p>Error en l'oper</p>
+					  </div>";
+			}
 		}
 		?>
 		<div class="table-responsive-sm">

@@ -13,7 +13,7 @@ function addAlumne($nom, $cognom, $mail, $data_naixement)
 
 function upAlumne($id, $nom, $cognom, $mail, $data_naixement)
 {
-	alumneUpdate($id, $nom, $cognom, $mail, $data_naixement);
+	return alumneUpdate($id, $nom, $cognom, $mail, $data_naixement);
 }
 
 function getAlumne($id)
@@ -23,7 +23,7 @@ function getAlumne($id)
 
 function deleteAlumne($id)
 {
-	alumneDelete($id);
+	return alumneDelete($id);
 }
 
 
